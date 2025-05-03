@@ -1,0 +1,17 @@
+digraph INFRA {
+  node [ color = "black", fillcolor = "#E6E6E6", height =1, style = "filled,bold,rounded", fontname = "Arial" ];
+  "MySQL Database" [ label = "MySQL Database
+(AWS::RDS::DBInstance)", shape =cylinder, fillcolor = "#FFCFB3" ];
+  "ECR Repository" [ label = "ECR Repository
+(AWS::ECR::Repository)", shape =cylinder, fillcolor = "#FFF5CD" ];
+  "S3 Bucket" [ label = "S3 Bucket
+(AWS::S3::Bucket)", shape =cylinder, fillcolor = "#FFF5CD" ];
+  "CodeBuild Project" [ label = "CodeBuild Project
+(AWS::CodeBuild::Project)", shape =rectangle, fillcolor = "#B7E0FF" ];
+  "Backend Node.js Application" [ label = "Backend Node.js Application
+(AWS::ECS::TaskDefinition)", shape =rectangle, fillcolor = "#B7E0FF" ];
+  "CodeBuild Project" -> "ECR Repository";
+  "CodeBuild Project" -> "S3 Bucket";
+  "Backend Node.js Application" -> "MySQL Database";
+  "Backend Node.js Application" -> "ECR Repository";
+}
